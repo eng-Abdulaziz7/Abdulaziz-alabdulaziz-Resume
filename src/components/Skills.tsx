@@ -1,10 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Skills = () => {
+  const { t, isRTL } = useLanguage();
+  
   const skillCategories = [
     {
-      title: "Frontend",
+      title: "skills.frontend",
       icon: "🎨",
       skills: [
         { name: "React", level: 95 },
@@ -16,7 +19,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Backend",
+      title: "skills.backend",
       icon: "⚙️",
       skills: [
         { name: "Node.js", level: 90 },
@@ -28,7 +31,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Cloud & DevOps",
+      title: "skills.cloud",
       icon: "☁️",
       skills: [
         { name: "AWS", level: 85 },
@@ -40,7 +43,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Tools & Others",
+      title: "skills.tools",
       icon: "🛠️",
       skills: [
         { name: "Git", level: 95 },
@@ -66,7 +69,7 @@ const Skills = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('skills.title')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               A comprehensive overview of my technical skills and proficiency levels.
             </p>
@@ -77,9 +80,9 @@ const Skills = () => {
             {skillCategories.map((category, index) => (
               <Card key={index} className="p-6 bg-gradient-card border-border/50 shadow-card hover:shadow-glow transition-smooth">
                 <div className="space-y-6">
-                  <div className="flex items-center space-x-3">
+                  <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                     <span className="text-2xl">{category.icon}</span>
-                    <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
+                    <h3 className="text-xl font-semibold text-foreground">{t(category.title)}</h3>
                   </div>
                   
                   <div className="space-y-4">
@@ -105,7 +108,7 @@ const Skills = () => {
 
           {/* Certifications */}
           <div className="text-center">
-            <h3 className="text-2xl font-semibold mb-8 text-foreground">Certifications</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-foreground">{t('skills.certifications')}</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {certifications.map((cert, index) => (
                 <Badge 

@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail, MapPin } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { useLanguage } from "@/hooks/useLanguage";
 const Hero = () => {
+  const { t, isRTL } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: 'smooth'
+    document.getElementById(sectionId)?.scrollIntoView({ 
+      behavior: 'smooth' 
     });
   };
   return <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-subtle relative overflow-hidden">
@@ -31,26 +34,25 @@ const Hero = () => {
           animationDelay: '0.2s'
         }}>
             <div className="space-y-2">
-              <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">PRODUCT OWNER</p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent">Abdulaziz Alabdulaziz</h1>
+              <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">{t('hero.greeting')}</p>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent">{t('hero.name')}</h1>
               <div className="flex items-center justify-center text-muted-foreground mt-4">
-                <MapPin className="w-4 h-4 mr-2" />
-                <span>San Francisco, CA</span>
+                <MapPin className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                <span>{t('hero.location')}</span>
               </div>
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Passionate about crafting exceptional digital experiences with modern technologies. 
-              Specialized in React, Node.js, and cloud architecture with 5+ years of industry experience.
+              {t('hero.bio')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
               <Button variant="hero" size="lg" onClick={() => scrollToSection('contact')} className="w-full sm:w-auto">
-                <Mail className="w-5 h-5" />
-                Get In Touch
+                <Mail className={`w-5 h-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                {t('hero.getInTouch')}
               </Button>
               <Button variant="glass" size="lg" onClick={() => scrollToSection('projects')} className="w-full sm:w-auto">
-                View My Work
+                {t('hero.viewWork')}
               </Button>
             </div>
           </div>

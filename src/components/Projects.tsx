@@ -2,8 +2,11 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Eye } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Projects = () => {
+  const { t, isRTL } = useLanguage();
+  
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -86,9 +89,9 @@ const Projects = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A showcase of my recent work and the technologies I've used to bring ideas to life.
+              {t('projects.description')}
             </p>
           </div>
 
@@ -150,13 +153,13 @@ const Projects = () => {
 
                   {/* Action Buttons */}
                   <div className="flex space-x-3 pt-4">
-                    <Button variant="hero" size="sm" className="flex-1">
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
+                     <Button variant="hero" size="sm" className="flex-1">
+                      <ExternalLink className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                      {t('projects.liveDemo')}
                     </Button>
                     <Button variant="glass" size="sm" className="flex-1">
-                      <Github className="w-4 h-4" />
-                      Code
+                      <Github className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                      {t('projects.code')}
                     </Button>
                   </div>
                 </div>
@@ -167,8 +170,8 @@ const Projects = () => {
           {/* View All Projects Button */}
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="border-primary/30 text-primary hover:bg-primary/10">
-              View All Projects on GitHub
-              <Github className="w-5 h-5 ml-2" />
+              {t('projects.viewAll')}
+              <Github className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
             </Button>
           </div>
         </div>

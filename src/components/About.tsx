@@ -1,12 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { Code, Rocket, Users, Trophy } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const About = () => {
+  const { t, isRTL } = useLanguage();
+  
   const stats = [
-    { icon: Code, label: "Projects Completed", value: "50+" },
-    { icon: Users, label: "Happy Clients", value: "30+" },
-    { icon: Rocket, label: "Years Experience", value: "5+" },
-    { icon: Trophy, label: "Awards Won", value: "8" },
+    { icon: Code, label: "about.projects", value: "50+" },
+    { icon: Users, label: "about.clients", value: "30+" },
+    { icon: Rocket, label: "about.experience", value: "5+" },
+    { icon: Trophy, label: "about.awards", value: "8" },
   ];
 
   return (
@@ -15,9 +18,9 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.title')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Driven by passion for technology and innovation, I create solutions that make a difference.
+              {t('about.description')}
             </p>
           </div>
 
@@ -75,7 +78,7 @@ const About = () => {
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
+                      <p className="text-sm text-muted-foreground">{t(stat.label)}</p>
                     </div>
                   </div>
                 </Card>

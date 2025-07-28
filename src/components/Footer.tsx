@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Heart, ArrowUp } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Footer = () => {
+  const { t, isRTL } = useLanguage();
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -17,7 +20,7 @@ const Footer = () => {
             {/* Brand */}
             <div className="space-y-4">
               <div className="font-bold text-2xl bg-gradient-primary bg-clip-text text-transparent">
-                Alex Johnson
+                {t('hero.name')}
               </div>
               <p className="text-muted-foreground">
                 Full Stack Developer passionate about creating exceptional digital experiences 
@@ -27,7 +30,7 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Quick Links</h4>
+              <h4 className="font-semibold text-foreground">{t('footer.quickLinks')}</h4>
               <div className="space-y-2">
                 {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((link) => (
                   <button
@@ -43,7 +46,7 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Get In Touch</h4>
+              <h4 className="font-semibold text-foreground">{t('footer.contact')}</h4>
               <div className="space-y-2 text-muted-foreground">
                 <p>alex.johnson@email.com</p>
                 <p>+1 (555) 123-4567</p>
@@ -55,9 +58,9 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border/50">
             <div className="flex items-center space-x-2 text-muted-foreground text-sm">
-              <span>© {currentYear} Alex Johnson. Made with</span>
+              <span>{t('footer.copyright')}</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>and lots of coffee.</span>
+              <span></span>
             </div>
 
             {/* Back to Top */}
@@ -67,8 +70,8 @@ const Footer = () => {
               onClick={scrollToTop}
               className="mt-4 md:mt-0 text-muted-foreground hover:text-primary"
             >
-              <ArrowUp className="w-4 h-4" />
-              Back to Top
+              <ArrowUp className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+              {t('footer.backToTop')}
             </Button>
           </div>
         </div>

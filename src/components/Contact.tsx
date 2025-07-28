@@ -3,8 +3,11 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Contact = () => {
+  const { t, isRTL } = useLanguage();
+  
   const contactInfo = [
     {
       icon: Mail,
@@ -38,10 +41,9 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Have a project in mind or want to collaborate? I'd love to hear from you. 
-              Let's create something amazing together.
+              {t('contact.description')}
             </p>
           </div>
 
@@ -111,8 +113,8 @@ const Contact = () => {
                   </div>
 
                   <Button variant="hero" size="lg" className="w-full">
-                    <Mail className="w-5 h-5" />
-                    Send Message
+                    <Mail className={`w-5 h-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                    {t('contact.send')}
                   </Button>
                 </form>
               </div>
