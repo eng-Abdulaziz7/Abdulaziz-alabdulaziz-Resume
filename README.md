@@ -10,7 +10,7 @@ Hi, I’m **Abdulaziz**, a **Product Owner & Business Analyst Specialist** with 
 
 I specialize in leading product development initiatives, gathering business requirements, and managing external vendors to deliver high-impact digital solutions. I bridge the gap between business and technology to ensure successful delivery of valuable features that meet user and organizational needs.
 
-## How Can I Edit This Code?
+## How Can I Edit This Code ?
 
 There are several ways of editing your application.
 
